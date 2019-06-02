@@ -8,11 +8,11 @@ class TodoForm extends React.Component {
                     <input
                         placeholder="Task"
                         onChange={this.props.handleChanges}
-                        value={this.props.name}
+                        value={this.props.todo}
                         name="task"
                     />
-                    <button>Add Task</button>
-                    <button>Clear Completed</button>
+                    <button type="submit">Add Task</button>
+                    <button type="button">Clear Completed</button>
                 </form>
             </div>
         )

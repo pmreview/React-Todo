@@ -15,7 +15,7 @@ class App extends React.Component {
         taskData: data,
         task: "",
         date: "",
-        completed: false
+        completed: false,
     }
   }
 
@@ -38,15 +38,33 @@ class App extends React.Component {
 
   handleChanges = event => {
     this.setState({
+      ...this.state,
       [event.target.name]: event.target.value
     });
+  }
+
+  toggleItem = date => {
+    this.setState(prevState => {
+      return {
+        taskData: prevState.taskData.map(task => {
+          if(task.date === date) {
+            return{
+              ...task,
+              completed: !task.completed
+            };
+          } else {
+            return task;
+          }
+        })
+      }
+    })
   }
 
   render() {
     return (
       <div>
         <h2>React ToDo List</h2>
-        <TodoList taskData={this.state.taskData}/>
+        <TodoList taskData={this.state.taskData} toggleItem={this.toggleItem}/>
         <TodoForm addTask={this.addTask} handleChanges={this.handleChanges} todo={this.state.task} />
       </div>
     );

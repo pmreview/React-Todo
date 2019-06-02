@@ -9,7 +9,7 @@ class TodoList extends React.Component {
         return (
             <div>
                 {this.props.taskData.map(taskFromMap => {
-                    return <Todo key={taskFromMap.date} taskOnProps={taskFromMap} />
+                    return <Todo key={taskFromMap.date} taskOnProps={taskFromMap} toggleItem={this.props.toggleItem} />
                 })}
             </div>
         )
